@@ -1,0 +1,85 @@
+Maven「ライブラリ自動インストーラ」
+
+
+◆Maven「ライブラリ自動インストーラ」のメリット
+
+	Mavenでは、リモートリポジトリでライブラリを管理している。
+	リモートリポジトリのライブラリをローカルリポジトリにダウンロードして使うことができる。
+
+	この仕組みを使うことで、下記のメリットがある。
+
+		・リモートで保存されているライブラリを自動でダウンロードできるため、
+		　プロジェクト新規参入者が、必要なライブラリを個別でダウンロードする手間がなくなる
+
+		・特定のライブラリのバージョンを上げる場合、pom.xmlで記述したライブラリのバージョンを修正することで、
+		　プロジェクトのメンバー全員に共有することが可能
+
+
+	リモートリポジトリは、デフォルトではMavenのセントラルリポジトリを使用するようになっているが、
+	社内用のリポジトリを用意して、社内で作成したプロジェクトはそこに公開するという使い方もできる。
+
+		※セントラルリポジトリとは
+			・Maven2の公式リポジトリ（http://repo1.maven.org/maven2/）のこと
+			・さまざまなライブラリ（JARなど）が登録されている 
+
+
+	・下記のようなことが、この機能で解消できる
+	
+		プロジェクト新規参入者のコスト削減
+			→ライブラリを手動でダウンロードする手間が減る
+			→ライブラリのバージョンを強制的に統一できる（人によって違うバージョンを使っているということが防げる）
+
+
+◆使い方
+
+	個々のプロジェクトで必要なライブラリの情報を pom.xml に記述しておく。
+	
+		記述例：
+			<project ...>
+			  ...
+			  <dependencies>
+			    <dependency>
+			      <groupId>junit</groupId>
+			      <artifactId>junit</artifactId>
+			      <version>3.8.1</version>
+			      <scope>test</scope>
+			    </dependency>
+			  </dependencies>
+			</project>
+
+	dependency 要素を加えることにより、
+	プロジェクトのビルドの適切な時点でライブラリのダウンロードや、クラスパスへの追加が行われるようになる。
+
+	dependency の子要素には groupId, artifactId, version, scope を指定することができる。
+	groupId, artifactId, version は依存するライブラリのものを指定する。
+
+
+	※Maven1 と Maven2 の依存性の扱い違い
+
+		Maven1 から Maven2 へのバージョンアップに伴い、
+		推移的な依存性(依存しているライブラリが依存しているライブラリ) が適切に扱われるようになっている。
+
+		例えば、作成しているプロジェクトが A.jar に依存し、A.jar が B.jar に依存している場合、
+		Maven1 では dependency に A.jar と B.jar の両方を指定する必要があったが、
+		Maven2 では dependency に A.jar だけを指定すれば、B.jar への依存性も自動的に解決されるようになった。
+
+			※これから導入する場合には、基本的にはMaven2を使用したほうが良い
+
+
+	※groupId, artifactId, version に指定する値の調べ方
+
+		・Maven Repository Search
+		https://mvnrepository.com/
+
+			Maven のライブラリやプラグインを検索するための Web サービス
+			キーワードを与えると、それに該当するライブラリやプラグインの情報を表示してくれる。
+
+
+
+◆参考サイト
+
+TECH SCORE 3. Maven 入門 (2)
+http://www.techscore.com/tech/Java/ApacheJakarta/Maven/3/
+
+Maven2によるビルド入門
+http://www.nulab.co.jp/kousei/chapter4/04.html
