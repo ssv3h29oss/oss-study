@@ -1,0 +1,88 @@
+Jenkinsとは？
+　JenkinsとはJavaで書かれたオープンソース継続的インテグレーションツールである。
+　ソフトウェア開発向けに継続的インテグレーションサービスを提供しており、
+　Apache TomcatなどのServletで動作しているサーバーベースシステムである。
+　ソフトウェア開発プロジェクトなどにおける「ビルド」「デプロイ」「テスト」などの
+　作業自動化/効率化を支援する。
+　
+　CVS、Subversion、Git、Mercurial、Perforce、Clearcaseといったバージョン管理
+　システムツールに対応し、Apache AntやApache Mavenにおける任意のシェルスクリプトや
+　Windowsバッチコマンドといったプロジェクトを実行することが出来る。
+　ビルドはバージョン管理システムにおけるコミットでのトリガ、cronライクのメカニズムを
+　通したスケジューリング、他のビルドが完了した時の構築、特定のビルドURLによる
+　リクエストといった様々な方法で起動することができる。
+　
+
+継続的インテグレーションツールとは？（英：Continuous[継続した] Integration[結合]）
+　ソフトウェア開発において、ビルドやテストを頻繁に繰り返し行なうことにより問題を
+　早期に発見し、開発の効率化・省力化や納期の短縮を図る手法。 
+　特に、専用のツールを用いてこのプロセスを自動化あるいは半自動化し、効率的に
+　実施する方式。
+　
+　バージョン管理ツールにコミットされたソースコードを定期的に自動ビルドすること
+　により、問題を早期に発見し対処を行うこと
+
+導入する目的は？
+　開発の効率化・省力化や納期の短縮を図るため。
+
+継続的インテグレーションのメリット
+・手戻りの削減、品質の維持
+・環境に依存しない
+・自動化による作業コストの削減
+・継続的に改善し続けられる
+
+Jenkinsでできること
+・ビルドの自動化
+　バージョン管理システム（SVNやGit）と連携し、ソースがコミットされたタイミングでビルドが実行されます。
+・デプロイの自動化
+　Jenkinsはビルドしたプログラムを開発サーバや本番サーバにデプロイすることができます。
+・テストの自動化
+　JenkinsはJUnit等のテストフレームワークを使ったテストができます。
+・静的コード解析の自動化
+　JenkinsはCheckstyle、FindBugs、Step Counter等の静的コード解析ができます。
+
+Jenkinsでできることやメリット
+・ソースコードの自動ビルド
+・定期的なビルドによるコンパイルエラー、バグの早期発見
+・ソースコードの解析、統計
+・テストの自動化
+・分散ビルドで早く
+・Web UIにより設定ができる
+・Git連携などができてコードを更新すると自動的にテストを実行できる
+
+テスト自動化
+Jenkinsでビルドとテストを自動化するには、SubversionやGitといったソースコード管理ツール、
+Mavenなどのビルドツール、JUnitのようなテストツールという3種のツールを用意し、
+さらにJenkinsがそれらのツールと連携できるように設定しておく（図1）。
+そうすることで、メンバーがソースコードをコミットするとJenkinsが更新を検知し、
+ビルドツールをキック。あらかじめビルドツールに仕込んでおいた手順書に従って、
+ビルドやテストが行われる。
+ビルドやテストが完了したら、JenkinsのWebページやメールなどで結果を確認する。
+エラーのときは解析し、ソースコードの該当箇所を修正して再度コミットする。
+再びテストが実行されるので、同じように結果を参照し、エラーなら解析して修正を
+施した上でコミット―という手順を、エラーがゼロになるまで繰り返す。
+
+
+
+
+＜参考＞
+・Jenkinsとは
+　Jenkinsとはなんぞや？：http://qiita.com/ko8@github/items/e6e058976d48d3fc3424
+　wikipedia：https://ja.wikipedia.org/wiki/Jenkins
+　オープンソースの自動テストツール／Jenkinsとは：https://www.ossnews.jp/oss_info/Jenkins
+　Jenkins入門の入門：https://simple-it-life.com/2016/02/10/jenkins-beginner/
+　Jenkinsではじめる継続的インテグレーション：https://www.slideshare.net/linoSth/jenkins-10666679?next_slideshow=1
+　jenkinsのすゝめ - 継続的インテグレーションと継続的デリバリー：https://www.slideshare.net/JunyaSuzuki1/jenkins-13502498
+
+・導入など
+　Jenkinsを使ってみる：http://www.dcom-web.co.jp/technology/jenkins/
+　さくらのナレッジ：http://knowledge.sakura.ad.jp/knowledge/5293/
+　調査で分かった！ITの現場「新3種の神器」：http://itpro.nikkeibp.co.jp/article/COLUMN/20131017/511818/?rt=nocnt
+　Jenkinsで実現するJava EEアプリケーションの自動ビルドと自動デプロイ：https://codezine.jp/article/detail/7929
+　CIツール「Jenkins」活用ソリューション：https://www.techmatrix.co.jp/product/cisolution/service/index.html
+
+・他
+　Jenkinsとチーム開発の素敵な関係：https://geechs-magazine.com/2913
+　Mavenでの自動化とJenkinsでの自動化の違い：https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q10154031890
+
+
