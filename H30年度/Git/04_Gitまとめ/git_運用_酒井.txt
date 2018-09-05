@@ -1,0 +1,27 @@
+1.マージ前に衝突するか確認する。
+　・衝突する部分を調べて、調整する。
+
+事前に衝突するか確認する方法１
+http://takaaki-kasai-tech.blogspot.com/2014/07/how-to-confirm-merge-conflict-will-occur-on-git-in-advance.html?m=1
+
+事前に衝突するか確認する方法２
+https://qiita.com/horimislime/items/84fa431460c8d39f37e6
+
+
+2.管理者を作る（1人がマージするようにする）
+　・管理者に編集するファイルを申請する。
+　・管理者は、衝突が起きそうなら調整する。
+
+3.誰がどのファイルを使用しているか管理する
+　・一覧などで変更を管理するなど
+　・同じファイルを使用したい場合は、調整する。
+
+
+Gitでやらかさないための事前予防策
+https://webcache.googleusercontent.com/search?q=cache:zeYmJnJSGfoJ:https://qiita.com/muran001/items/f13742b51da3a22117ee+&cd=3&hl=ja&ct=clnk&gl=jp
+
+安全なMergeを行う開発フロー
+https://dev.classmethod.jp/tool/git/development-flow-with-safty-merge/
+
+
+
